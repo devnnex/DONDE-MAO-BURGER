@@ -677,12 +677,18 @@ textarea#customNotes {
   border: none;
   color: #000;
   border-radius: 6px;
-  width: 22px;
-  height: 22px;
+  width: 26px;           /* un poco más grande para espacio */
+  height: 26px;
+  display: flex;          /* centrado con flex */
+  align-items: center;    /* vertical */
+  justify-content: center;/* horizontal */
   font-weight: bold;
   cursor: pointer;
   transition: 0.2s;
+  line-height: 1;         /* importante para que no se desplace el símbolo */
+  font-size: 14px;        /* ajusta según tu preferencia */
 }
+
 
 .extra-controls button:hover {
   background: gold;
@@ -693,5 +699,6 @@ textarea#customNotes {
   color: #ccc;
   margin-left: 8px;
 }
+
 
 
