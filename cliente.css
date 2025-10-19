@@ -1,0 +1,697 @@
+/* cliente.css — versión corregida para que la estructura coincida con style.css (restaurante) */
+/* Glassmorphism + layout igual al restaurante, pero con formulario y menu cliente */
+
+*{ 
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'poppins', sans-serif;
+  font-size: 18px;
+}
+
+body{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background-image: url('image-path/bg.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
+  min-height: 100vh;
+}
+
+/* 🔹 HEADER con glassmorphism (igual que restaurante) */
+.header{
+  height: 80px;
+  width: 70%;
+  background: rgba(255, 255, 255, 0.12);
+  border-radius: 15px;
+  margin: 30px 0px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+.header .logo{
+  height: 80px;
+  width: auto;
+  object-fit: contain;
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.tables-btn {
+  background: rgba(255, 255, 255, 0.15);
+  color: rgb(255, 255, 255);
+  padding: 7px 12px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: bold;
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255,255,255,0.3);
+  transition: all 0.3s ease;
+}
+.tables-btn:hover {
+  background: rgba(255, 255, 255, 0.25);
+  color: white;
+}
+
+/* carrito pequeño en header (badge) */
+.cart{
+  display: flex;
+  background: rgba(255,255,255,0.15);
+  justify-content: space-between;
+  align-items: center;
+  padding: 7px 10px;
+  border-radius: 10px;
+  width: 80px;
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255,255,255,0.3);
+}
+.fa-solid{
+  color: rgb(255, 255, 255);;
+}
+.cart p{
+  height: 22px;
+  width: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 22px;
+  color: rgb(255, 255, 255);
+  font-weight: 800;
+}
+
+/* ===== LAYOUT PRINCIPAL =============== */
+/* exactamente igual a style.css del restaurante para conservar proporciones */
+.container{
+  display: flex;
+  width: 70%;
+  margin-bottom: 30px;
+}
+
+/* productos (root) igual que restaurante: ancho fijo 60% y grid 3 columnas */
+#root{
+  width: 60%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 20px;
+}
+
+/* sidebar carrito exactamente igual que restaurante: ancho 40% con margin-left */
+.sidebar{
+  width: 40%;
+  border-radius: 15px;
+  background: rgba(255,255,255,0.12);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  margin-left: 20px;
+  padding: 15px;
+  text-align: center;
+  border: 1px solid rgba(255,255,255,0.3);
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+/* header interno de sidebar */
+.head{
+  background: rgba(255,255,255,0.15);
+  border-radius: 10px;
+  height: 40px;
+  padding: 10px;
+  margin-bottom: 20px;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255,255,255,0.3);
+}
+
+/* foot / total */
+.foot{
+  display: flex;
+  justify-content: space-between;
+  margin: 20px 0px;
+  padding: 10px 0px;
+  border-top: 1px solid rgba(255,255,255,0.3);
+  color: white;  /* deja Total en blanco */
+}
+
+/* ===== PRODUCT CARD (glass) ================= */
+.box{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(255,255,255,0.15);
+  border-radius: 15px;
+  padding: 15px;
+  position: relative;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255,255,255,0.3);
+  transition: all 0.3s ease;
+}
+.box:hover {
+  background: rgba(255,255,255,0.25);
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.25);
+}
+
+/* nombre del producto dentro de .bottom (gris glass) */
+.box .bottom p {
+  font-size: 20px;
+  color: rgba(255, 255, 255, 0.85); /* gris translúcido tipo glass */
+  font-weight: 500;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+/* imagen caja */
+.img-box{
+  width: 100%;
+  height: 180px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.images{
+  max-width: 90%;
+  max-height: 90%;
+  object-fit: cover;
+  object-position: center;
+}
+
+/* area inferior de la card */
+.bottom{
+  margin-top: 20px;
+  width: 100%;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  height: 110px;
+}
+
+/* precio (h2) */
+h2{
+  font-size: 20px;
+  color: rgb(255, 254, 254);
+}
+
+/* ===== BOTONES (glass) ================== */
+button{
+  width: 100%;
+  border: none;
+  border-radius: 10px;
+  background: rgb(0, 0, 0); /* goldenrod translúcido */
+  padding: 7px 25px;
+  cursor: pointer;
+  color: white;
+  backdrop-filter: blur(6px);
+  border: 1px solid rgba(255,255,255,0.3);
+  transition: all 0.3s ease;
+}
+button:hover{
+  background: rgba(51,51,51,0.8);
+}
+/* click */
+button:active {
+  transform: scale(0.95);
+  background: rgba(40, 41, 42, 0.5);
+  box-shadow: 0 0 25px rgba(37, 37, 37, 0.7);
+}
+button:disabled {
+  background-color: rgba(128,128,128,0.5);
+  cursor: not-allowed;
+}
+
+/* ===== ITEMS DEL CARRITO (glass) ======= */
+#cartItem {
+  color: white; /* mensaje "Tu carrito está vacío" en blanco */
+  font-size: 16px;
+  text-align: center;
+  opacity: 0.9;
+}
+
+.cart-item{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+  background: rgba(255,255,255,0.2);
+  border-bottom: 1px solid rgba(255,255,255,0.3);
+  border-radius: 8px;
+  margin: 10px 10px;
+  backdrop-filter: blur(6px);
+}
+
+.row-img{
+  width: 50px;
+  height: 50px;
+  border-radius: 50px;
+  border: 1px solid rgb(39, 40, 40);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.rowimg{
+  max-width: 43px;
+  max-height: 43px;
+  border-radius: 50%;
+}
+
+/* controles de cantidad */
+.quantity-controls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.quantity-controls span {
+  display: inline-block;
+  width: 28px;
+  height: 28px;
+  line-height: 28px;
+  text-align: center;
+  border: 1px solid rgb(33, 34, 34);
+  border-radius: 4px;
+  background: rgba(255,255,255,0.2);
+  color: rgb(0, 0, 0);
+  font-weight: bold;
+  cursor: pointer;
+  user-select: none;
+  transition: all 0.2s ease;
+  backdrop-filter: blur(6px);
+}
+.quantity-controls span:hover {
+  background-color: rgb(53, 54, 56);
+  color: white;
+}
+
+/* ===== MENU LATERAL CLIENTE (igual que mesa-sidebar) ===== */
+.mesa-sidebar {
+  position: fixed;
+  top: 0;
+  left: -100%;
+  height: 100%;
+  max-width: 250px;
+  width: 80%;
+  background: rgba(255,255,255,0.12);
+  padding: 15px;
+  transition: left 0.3s ease-in-out;
+  z-index: 1000;
+  border-right: 2px solid rgba(255,255,255,0.3);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-radius: 0 15px 15px 0;
+}
+.mesa-sidebar.active {
+  left: 0;
+}
+.menu-item {
+  padding: 10px;
+  margin: 5px 0;
+  border: 1px solid rgba(255,255,255,0.3);
+  border-radius: 10px;
+  background: rgba(255,255,255,0.2);
+  cursor: pointer;
+}
+.menu-item:hover {
+  background: rgb(48, 48, 48);
+  color: white;
+}
+
+/* ===== Checkout form dentro de sidebar ===== */
+.checkout-form {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.checkout-form input {
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid rgba(255,255,255,0.3);
+  background: rgba(255,255,255,0.15);
+  color: white;
+}
+.checkout-form input::placeholder {
+  color: rgba(255,255,255,0.7);
+}
+/* form button */
+.checkout-form button {
+  margin-top: 6px;
+  font-weight: 700;
+}
+
+button.agotado {
+  background: rgba(128,128,128,0.6);
+  color: #ccc;
+  cursor: not-allowed;
+  box-shadow: none;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+/* 🎨 Estilo Glassmorphism para inputs y select */
+#nombreCliente,
+#telefonoCliente,
+#direccionCliente,
+#metodoPago {
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 12px;
+  padding: 10px;
+  color: #fff;
+  font-size: 16px;
+  width: 100%;
+  margin-top: 8px;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  transition: all 0.3s ease-in-out;
+}
+
+/* 🎯 Efecto al enfocar */
+#nombreCliente:focus,
+#telefonoCliente:focus,
+#direccionCliente:focus,
+#metodoPago:focus {
+  outline: none;
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  background: rgba(255, 255, 255, 0.25);
+}
+
+/* Para que las opciones del select se vean bien */
+#metodoPago option {
+  background: #222;
+  color: #fff;
+  border: none;
+}
+
+ #paymentType{
+    color: white;
+ }
+
+/* ===== RESPONSIVE (same breakpoints as restaurante) ===== */
+@media (max-width: 1024px) {
+  .header, .container {
+    width: 90%;
+  }
+  #root {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+    width: 95%;
+  }
+  #root {
+    width: 100%;
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .sidebar {
+    width: 100%;
+    margin-left: 0;
+    margin-top: 20px;
+  }
+}
+@media (max-width: 480px) {
+  .header {
+    flex-direction: column;
+    height: auto;
+    padding: 10px;
+  }
+  .cart {
+    width: auto;
+    padding: 5px 10px;
+  }
+  h2 {
+    font-size: 18px;
+  }
+  button {
+    font-size: 16px;
+    padding: 7px 15px;
+  }
+  #root {
+    grid-template-columns: repeat(2, 1fr); /* 👈 antes era 1fr, ahora 2 */
+    grid-gap: 15px;
+  }
+}
+
+
+/* 🌙 Estilo general del modal */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 100;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.modal-content {
+  background: #1c1c1c;
+  color: #fff;
+  padding: 18px;
+  border-radius: 14px;
+  width: 90%;
+  max-width: 360px;
+  text-align: left;
+  box-shadow: 0 0 20px rgba(255, 215, 0, 0.25);
+  font-family: "Poppins", sans-serif;
+  overflow-y: auto;
+  max-height: 90vh;
+  position: relative;
+}
+
+/* ✨ Cabecera del modal */
+.modal-content h3 {
+  font-size: 16px;
+  color: #f5d142;
+  margin-top: 10px;
+  margin-bottom: 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.close {
+  position: absolute;
+  top: 12px;
+  right: 14px;
+  font-size: 22px;
+  cursor: pointer;
+  color: #f5d142;
+  transition: 0.3s;
+}
+.close:hover {
+  color: #fff;
+}
+
+/* 🧂 Ingredientes base */
+.custom-options {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-bottom: 12px;
+  gap: 6px;
+}
+
+.custom-options label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 14px;
+  color: #eee;
+  background: #2a2a2a;
+  padding: 6px 10px;
+  border-radius: 6px;
+  width: 100%;
+  transition: 0.2s;
+}
+.custom-options label:hover {
+  background: #333;
+}
+
+/* ➕ Sección de adicionales */
+#extrasContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 8px;
+}
+
+.extra-item {
+  background: #2a2a2a;
+  border-radius: 8px;
+  padding: 8px 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: background 0.3s;
+}
+.extra-item:hover {
+  background: #333;
+}
+
+.extra-item span {
+  font-size: 14px;
+  color: #ddd;
+  flex: 1;
+  margin-right: 10px;
+}
+
+/* 🔢 Botones de cantidad */
+.extra-controls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.extra-controls button {
+  background: #f5d142;
+  color: #000;
+  border: none;
+  border-radius: 6px;
+  width: 26px;
+  height: 26px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.extra-controls button:hover {
+  background: gold;
+}
+
+.extra-controls span {
+  width: 18px;
+  text-align: center;
+  font-size: 14px;
+}
+
+/* 📝 Campo de notas */
+textarea#customNotes {
+  width: 100%;
+  height: 65px;
+  border-radius: 8px;
+  border: none;
+  padding: 8px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 13px;
+  margin-top: 10px;
+  resize: none;
+  background: #2b2b2b;
+  color: #fff;
+}
+
+/* ⚡ Botón principal */
+.btnConfirmar {
+  background: linear-gradient(90deg, gold, #f5d142);
+  color: #000;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 16px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 15px;
+  transition: 0.3s;
+  width: 100%;
+  margin-top: 14px;
+  box-shadow: 0 0 10px rgba(255, 215, 0, 0.25);
+}
+.btnConfirmar:hover {
+  background: #ffe347;
+}
+
+/* ✨ Scrollbar sutil dentro del modal */
+.modal-content::-webkit-scrollbar {
+  width: 6px;
+}
+.modal-content::-webkit-scrollbar-thumb {
+  background: #555;
+  border-radius: 4px;
+}
+.modal-content::-webkit-scrollbar-thumb:hover {
+  background: #777;
+}
+
+/* 📱 Responsivo */
+@media (max-width: 400px) {
+  .modal-content {
+    max-width: 95%;
+    padding: 16px;
+  }
+  .extra-item span {
+    font-size: 13px;
+  }
+  .btnConfirmar {
+    font-size: 14px;
+  }
+}
+
+
+.ingredientes-list {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-bottom: 10px;
+}
+
+.extra-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #111;
+  padding: 6px 10px;
+  border-radius: 8px;
+  margin-bottom: 6px;
+  font-size: 13px;
+}
+
+.extra-controls {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.extra-controls button {
+  background: #f5d142;
+  border: none;
+  color: #000;
+  border-radius: 6px;
+  width: 22px;
+  height: 22px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.extra-controls button:hover {
+  background: gold;
+}
+
+.extra-price {
+  font-size: 11px;
+  color: #ccc;
+  margin-left: 8px;
+}
+
+

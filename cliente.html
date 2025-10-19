@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pedidos en Casa</title> 
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
+  <link rel="stylesheet" href="cliente.css">
+</head>
+<body>
+  <div class="header">
+    <img src="image-path/logo.png" alt="Logo" class="logo">
+
+    <div class="header-actions">
+      <!-- Botón para abrir menú lateral -->
+      <div class="tables-btn" onclick="toggleMenu()">
+        <i class="fa-solid fa-bars"></i> Menu
+      </div>
+      <!-- Carrito -->
+      <div class="cart">
+        <i class="fa-solid fa-cart-shopping"></i>
+        <p id="count">0</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div id="root"></div>
+
+    <!-- Carrito -->
+    <div class="sidebar" id="cartSidebar">
+      <div class="head">
+       <p>Mi Pedido
+          <i class="fa-solid fa-trash" style="cursor:pointer; color:rgb(254, 254, 254); margin-left:10px;" onclick="clearCart()"></i>
+        </p>
+      </div>
+      <div id="cartItem">Tu carrito está vacío</div>
+      <div class="foot">
+        <h3>Total</h3>
+        <h2 id="total">$ 0</h2>
+      </div>
+
+      <!-- Formulario de datos -->
+      <div class="checkout-form">
+        <input type="text" id="nombreCliente" placeholder="Tu nombre">
+        <input type="tel" id="telefonoCliente" placeholder="Tu teléfono">
+        <input type="text" id="direccionCliente" placeholder="Tu dirección (si es domicilio)">
+        <div class="form-group">
+              <label for="metodoPago" id="paymentType">Método de pago:</label>
+              <select id="metodoPago">
+              <option value="Efectivo">Efectivo</option>
+              <option value="Transferencia">Transferencia</option>
+  </select>
+</div>
+
+        <button onclick="confirmarOrden()">Confirmar Orden Ahora</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Sidebar Menú del Cliente -->
+  <div class="mesa-sidebar" id="menuSidebar">
+    <div class="head">
+      <p>Menu</p>
+    </div>
+    <div class="menu-item">About</div>
+    <div class="menu-item">Services</div>
+    <div class="menu-item">Products</div>
+    <div class="menu-item">Payments</div>
+    <div class="menu-item">More</div>
+  </div>
+
+
+  <!-- Modal Descripción -->
+<div id="descModal" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <h2 id="modalTitle"></h2>
+    <p id="modalDescription"></p>
+    <h3 id="modalPrice"></h3>
+  </div>
+</div>
+
+<!-- Modal de personalización -->
+<div id="customModal" class="modal">
+  <div class="modal-content">
+    <span class="close" id="closeCustom">&times;</span>
+    <h2 id="customTitle"></h2>
+    <p>Selecciona qué deseas quitar o añadir:</p>
+
+    <div id="customOptions" class="custom-options"></div>
+
+    <textarea id="customNotes" placeholder="Notas adicionales (ej: sin cebolla, extra salsa...)"></textarea>
+
+    <button id="confirmCustom" class="btnConfirmar">Agregar/Modificar Producto</button>
+  </div>
+</div>
+
+
+
+  <script src="cliente.js"></script>
+</body>
+</html>
